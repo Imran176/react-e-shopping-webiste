@@ -7,16 +7,14 @@ import CustomBtn from "../custom-btn/CustomBtn";
 function SignIn(props) {
   const [user, setUser] = useState({ email: "", password: "" });
 
-  const handleSignIn = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     setUser({ email: "", password: "" });
   };
 
   const handleChange = (e) => {
-    e.preventDefault();
-    const name = e.target.name;
-    const value = e.target.value;
-    setUser({ [name]: value });
+    const {value, name} = e.target;
+    setUser({ ...user,[name]: value });
   };
 
   return (
@@ -24,7 +22,7 @@ function SignIn(props) {
       <h2>Already have an account</h2>
       <span>Sign in with Email</span>
 
-      <form onSubmit={handleSignIn}>
+      <form onSubmit={handleSubmit}>
         <FormInput
           type="email"
           name="email"

@@ -1,9 +1,9 @@
 import React from "react";
 import "./form-input.scss";
 
-function FormInput({ handleChange, label, value, ...otherProps }) {
+function FormInput({ handleChange, label, ...otherProps }) {
 
-    console.log("form-input", value);
+    console.log("form-input otherProps: ", otherProps);
   return (
     <div className="group">
       <input
@@ -15,7 +15,7 @@ function FormInput({ handleChange, label, value, ...otherProps }) {
       {label ? (
         <label
           className={`${
-            value.length ? "shrink" : ""
+            otherProps.value.length ? "shrink" : ""
           } form-input-label`}
         >
           {label}
