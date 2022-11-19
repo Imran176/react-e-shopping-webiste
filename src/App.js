@@ -7,25 +7,32 @@ import HomePage from './pages/homePage/HomePage';
 import ShopPage from './pages/shopPage/ShopPage';
 import SiginSignupPage from './pages/siginSignupPage/SiginSignupPage';
 
-import { auth } from "./firebase/firebase.utils";
-
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 function App() {
   const [currentUser, setCurrentUser] = useState(null);
-
   let unsubscribeFromAuth = null;
 
   useEffect(() => {
-    unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-      setCurrentUser(user)
-      console.log("user: ", user);
-    })
-    return (()=> {
+    unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot(snapShot => {
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data()
+          })
+        });
+      } else {
+        setCurrentUser(userAuth)
+      }
+    });
+
+    return (() => {
       unsubscribeFromAuth();
     })
-  }, [currentUser])
-  
-  console.log("unsubscribeFromAuth: ", unsubscribeFromAuth);
+  }, [])
 
   return (
     <div className="">

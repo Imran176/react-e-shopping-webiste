@@ -3,7 +3,6 @@ import "./form-input.scss";
 
 function FormInput({ handleChange, label, ...otherProps }) {
 
-    console.log("form-input otherProps: ", otherProps);
   return (
     <div className="group">
       <input

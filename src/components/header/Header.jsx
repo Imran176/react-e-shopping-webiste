@@ -18,7 +18,7 @@ const header = ({ currentUser }) => {
         <Link className="option" to="/contact">
           Contact Us
         </Link>
-        {currentUser ? (
+        {(currentUser && currentUser != null) ? (
           <div className="option" onClick={()=> auth.signOut()}>Sign Out</div>
         ) : (
           <Link className="option" to="/signin">
