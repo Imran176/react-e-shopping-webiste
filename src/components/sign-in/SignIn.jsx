@@ -3,6 +3,7 @@ import "./sign-in.scss";
 
 import FormInput from "../form-input/FormInput";
 import CustomBtn from "../custom-btn/CustomBtn";
+import { signInWithGoogle } from "../../firebase/firebase.utils";
 
 function SignIn(props) {
   const [user, setUser] = useState({ email: "", password: "" });
@@ -13,8 +14,8 @@ function SignIn(props) {
   };
 
   const handleChange = (e) => {
-    const {value, name} = e.target;
-    setUser({ ...user,[name]: value });
+    const { value, name } = e.target;
+    setUser({ ...user, [name]: value });
   };
 
   return (
@@ -39,7 +40,10 @@ function SignIn(props) {
           value={user.password}
           handleChange={handleChange}
         />
-        <CustomBtn type="submit" value="Submit Form">Sign in</CustomBtn>
+        <div className="btn-group">
+          <CustomBtn type="submit">Sign in</CustomBtn>
+          <CustomBtn onClick={signInWithGoogle} isGoogleSignIn>Sign in Google</CustomBtn>
+        </div>
       </form>
     </div>
   );
