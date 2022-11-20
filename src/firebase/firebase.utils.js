@@ -14,7 +14,6 @@ const config = {
     measurementId: "G-95FSGTM5ZW"
 };
 
-
 //create new user in database
 export const createUserProfileDocument = async (userAuth, additionalData) => {
 

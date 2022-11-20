@@ -16,13 +16,11 @@ function SignIn(props) {
       try {
         await auth.signInWithEmailAndPassword(email, password);
         setUser({ email: "", password: "" });
-
-        console.log("Sign In With Email Successful");
       } catch (error) {
         console.log("Sign In Error: ", error);
       }
     } else {
-      alert("Email & Password required to Sign In")
+      alert("Email & Password are required to Sign In");
     }
   };
 

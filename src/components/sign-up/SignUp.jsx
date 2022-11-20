@@ -18,12 +18,9 @@ function SignUp(props) {
     event.preventDefault();
     const { displayName, email, password, confirmPassword } = userInfo;
 
-    console.log("handleSubmit userInfo: ", userInfo);
-
     if (displayName && email && password && confirmPassword) {
       if (password !== confirmPassword) {
-        alert("Password don't match");
-        console.log("Password don't match");
+        alert("Password don't match!");
         return;
       }
 
@@ -42,7 +39,7 @@ function SignUp(props) {
           confirmPassword: "",
         });
       } catch (error) {
-        console.log("error: ", error);
+        console.log("Sign Up Error: ", error);
       }
     } else {
       alert("Please fill all the fields to Sign Up");
