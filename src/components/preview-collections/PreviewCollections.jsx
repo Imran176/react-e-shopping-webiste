@@ -3,7 +3,6 @@ import "./previewCollections.scss";
 import ColllectionItem from "../colllection-item/ColllectionItem";
 
 const PreviewCollections = ({ title, items }) => {
-  console.log(title);
 
   return (
     <div className="collection-preview">
