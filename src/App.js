@@ -10,7 +10,7 @@ import SiginSignupPage from './pages/siginSignupPage/SiginSignupPage';
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null);
+  // const [currentUser, setCurrentUser] = useState(null);
   let unsubscribeFromAuth = null;
 
   useEffect(() => {
