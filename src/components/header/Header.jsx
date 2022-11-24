@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import "./header.scss";
@@ -18,8 +19,10 @@ const header = ({ currentUser }) => {
         <Link className="option" to="/contact">
           Contact Us
         </Link>
-        {(currentUser && currentUser != null) ? (
-          <div className="option" onClick={()=> auth.signOut()}>Sign Out</div>
+        {currentUser && currentUser != null ? (
+          <div className="option" onClick={() => auth.signOut()}>
+            Sign Out
+          </div>
         ) : (
           <Link className="option" to="/signin">
             Sign In
@@ -30,4 +33,8 @@ const header = ({ currentUser }) => {
   );
 };
 
-export default header;
+const mapStateToProps = (state) => ({
+  currentUser: state.user.currentUser
+})
+
+export default connect(mapStateToProps)(header);
