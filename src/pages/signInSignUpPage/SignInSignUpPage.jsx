@@ -1,9 +1,9 @@
 import React from 'react';
-import "./siginSignupPage.scss";
+import "./signInSignUpPage.scss";
 import SignIn from '../../components/sign-in/SignIn';
 import SignUp from '../../components/sign-up/SignUp';
 
-const SiginSignupPage = () => {
+const SignInSignUpPage = () => {
     return (
         <div className='sign-in-and-sign-up'>
             <SignIn />
@@ -12,4 +12,4 @@ const SiginSignupPage = () => {
     );
 };
 
-export default SiginSignupPage;
+export default SignInSignUpPage;
