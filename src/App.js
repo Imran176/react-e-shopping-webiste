@@ -6,6 +6,7 @@ import './App.css';
 import Header from './components/header/Header';
 import HomePage from './pages/homePage/HomePage';
 import ShopPage from './pages/shopPage/ShopPage';
+import CheckoutPage from './pages/checkoutPage/CheckoutPage';
 import SignInSignUpPage from './pages/signInSignUpPage/SignInSignUpPage';
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
@@ -56,6 +57,7 @@ function App(props) {
       <Switch>
         <Route path="/" exact={true} component={HomePage} />
         <Route path="/shop" component={ShopPage} />
+        <Route path="/checkout" component={CheckoutPage} />
         <Route path="/signin"
           exact={true}
           render={() => props.currentUser ? (<Redirect to="/" />) : (<SignInSignUpPage />)}
