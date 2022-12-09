@@ -40,6 +40,7 @@ function SignUp(props) {
         });
       } catch (error) {
         console.log("Sign Up Error: ", error);
+        alert("Sign Up Error");
       }
     } else {
       alert("Please fill all the fields to Sign Up");

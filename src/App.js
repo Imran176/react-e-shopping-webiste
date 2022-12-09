@@ -57,8 +57,9 @@ function App(props) {
       <Switch>
         <Route path="/" exact={true} component={HomePage} />
         <Route path="/shop" component={ShopPage} />
-        <Route path="/checkout" component={CheckoutPage} />
-        <Route path="/signin"
+        <Route exact path="/checkout" component={CheckoutPage} />
+        <Route
+          path="/signin"
           exact={true}
           render={() => props.currentUser ? (<Redirect to="/" />) : (<SignInSignUpPage />)}
         />

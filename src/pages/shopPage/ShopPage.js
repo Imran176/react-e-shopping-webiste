@@ -1,20 +1,19 @@
 import React, { useState } from 'react';
-import SHOP_DATA from '../../data/shopData';
-import "./shopPage.scss"
+import { Component } from 'react';
+import { Route } from 'react-router-dom';
 
-import PreviewCollections from '../../components/preview-collections/PreviewCollections';
+import "./shopPage.scss";
+import CollectionsOverview from '../../components/collections-overview/CollectionsOverview';
+import CategoryPage from '../categoryPage/CategoryPage';
 
-function ShopPage(props) {
-    const [collections, setCollections] = useState(SHOP_DATA);
-
+function ShopPage({match}) {
+    // const [collections, setCollections] = useState(collections);
+    console.log("Match: ",match);
     return (
         <div className='shop-page'>
             <h2>Shop Page</h2>
-            {collections.map(({ id, ...otherCollectionsProps }) => {
-                return (
-                    <PreviewCollections key={id} {...otherCollectionsProps} />
-                )
-            })}
+            <Route exact path={`${match.path}`} component={CollectionsOverview} />
+            <Route path={`${match.path}/:categoryId`} component={CategoryPage} />
         </div>
     );
 }
