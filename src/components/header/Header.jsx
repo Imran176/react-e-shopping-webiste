@@ -1,7 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { ReactComponent as Logo } from "../../assets/crown.svg";
+import { ReactComponent as Logo } from "../../assets/RoyalClothing.svg";
+// import { royalClothing } from "../../assets/royalClothing.png";
 import "./header.scss";
 
 import CartIcon from "../cart-icon/CartIcon";
@@ -17,6 +18,9 @@ const header = ({ currentUser, hidden }) => {
   return (
     <div className="header">
       <Link to="/" className="logo-container">
+        {/* <div className="logo">
+          <img src="../../assets/royalClothing.png" alt="logo" />
+        </div> */}
         <Logo className="logo" />
       </Link>
       <div className="options">

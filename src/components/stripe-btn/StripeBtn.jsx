@@ -13,10 +13,11 @@ const StripeBtn = ({ price }) => {
   return (
     <StripeCheckout
       label="Pay"
-      name="Cloths Shop Ltd."
+      name="Royal Clothing Ltd."
       billingAddress
       shippingAddress
-      image="https://svgshare.com/i/CUz.svg"
+      // image="https://svgshare.com/i/CUz.svg"
+      image="https://svgshare.com/i/osm.svg"
       description={`Your total is $${price}`}
       amount={stripePrice}
       panelLabel="Pay"
