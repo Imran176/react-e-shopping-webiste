@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 import "./shopPage.scss";
@@ -8,7 +7,6 @@ import CategoryPage from '../categoryPage/CategoryPage';
 
 function ShopPage({match}) {
     // const [collections, setCollections] = useState(collections);
-    console.log("Match: ",match);
     return (
         <div className='shop-page'>
             <h2>Shop Page</h2>
