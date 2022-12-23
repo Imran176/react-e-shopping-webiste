@@ -19,6 +19,7 @@
     "redux-persist": "^6.0.0",
     "reselect": "^4.1.7",
     "sass": "^1.56.1",
+    "styled-components": "^5.3.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
