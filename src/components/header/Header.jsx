@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { ReactComponent as Logo } from "../../assets/RoyalClothing.svg";
-// import "./header.scss";
 
 import CartIcon from "../cart-icon/CartIcon";
 import CartDropDown from "../cart-dropdown/CartDropDown";

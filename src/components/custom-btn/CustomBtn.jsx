@@ -1,5 +1,4 @@
 import React from "react";
-import "./custom-btn.scss";
 
 import { CustomBtnComponent } from "./CustomBtn.styles";
 
