@@ -15,6 +15,9 @@ import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from './redux/user/userSelector';
 
+// import { addCollectionAndDocuments } from "./firebase/firebase.utils";
+// import { selectCollectionsForPreview } from './redux/shop/shopSelector';
+
 import { setCurrentUser } from "./redux/user/userActions";
 
 
@@ -24,6 +27,7 @@ function App(props) {
 
   useEffect(() => {
     const { setCurrentUser } = props;
+    // const { setCurrentUser, collectionsArray } = props;
 
     unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
 
@@ -41,8 +45,10 @@ function App(props) {
           })
         });
       } else {
-        // setCurrentUser(userAuth)
-        setCurrentUser(userAuth)
+        setCurrentUser(userAuth);
+        // addCollectionAndDocuments(
+        //   'collections',
+        //   collectionsArray.map(({ title, items }) => ({ title, items })))
       }
     });
 
@@ -72,10 +78,14 @@ function App(props) {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  // collectionsArray: selectCollectionsForPreview,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   setCurrentUser: user => dispatch(setCurrentUser(user))
 });
+
+// Line# 18, 19, 25, 30, 49, 81 were written so that we don't have to 
+// manually enter our shop data ( collection and item ) into Firebase.
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
