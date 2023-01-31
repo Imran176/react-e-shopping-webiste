@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 
 import CollectionsOverviewContainer from "../../components/collections-overview/CollectionsOverviewContainer";
 import CategoryPageContainer from "../categoryPage/CategoryPageContainer";
-import { fetchCollectionsStartAsync } from "../../redux/shop/shopActions";
+
+import { fetchCollectionsStart } from "../../redux/shop/shopActions";
 
 import "./shopPage.scss";
 
@@ -16,8 +17,8 @@ function ShopPage(props) {
     // .then(response=> response.json())
     // .then(collections=> console.log("Api Data: ",collections))
 
-    const { fetchCollectionsStartAsync } = props;
-    fetchCollectionsStartAsync();
+    const { fetchCollectionsStart } = props;
+    fetchCollectionsStart();
   }, []);
 
   const { match } = props;
@@ -38,7 +39,7 @@ function ShopPage(props) {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchCollectionsStartAsync: () => dispatch(fetchCollectionsStartAsync()),
+  fetchCollectionsStart: () => dispatch(fetchCollectionsStart()),
 });
 
 export default connect(null, mapDispatchToProps)(ShopPage);
