@@ -5,14 +5,15 @@ import "./category.scss";
 import CollectionItem from "../../components/collection-item/CollectionItem";
 import { selectCategory } from "../../redux/shop/shopSelector";
 
-function CategoryPage({ collection }) {
-  const { title, items } = collection;
+function CategoryPage({ collections, isLoading }) {
+  const { title, items } = collections;
+
   return (
     <div className="category-page">
       <h2 className="title">{title}</h2>
       <div className="items">
         {items.map((item) => (
-          <CollectionItem key={item.id} item={item}/>
+          <CollectionItem key={item.id} item={item} />
         ))}
       </div>
     </div>
@@ -20,7 +21,7 @@ function CategoryPage({ collection }) {
 }
 
 const mapStateToProps = (state, ownProps) => ({
-  collection: selectCategory(ownProps.match.params.categoryId)(state),
+  collections: selectCategory(ownProps.match.params.categoryId)(state),
 });
 
 export default connect(mapStateToProps)(CategoryPage);

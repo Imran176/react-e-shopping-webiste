@@ -18,6 +18,7 @@ const header = ({ currentUser, hidden }) => {
     <HeaderComponent>
       <LogoComponent to="/">
         <Logo className="logo" />
+        <h1 className="logo" style={{color: "#0098A6"}}>Royal Clothing</h1>
       </LogoComponent>
       <OptionsComponent>
         <OptionLink to="/shop">
