@@ -1,4 +1,4 @@
-import { call, put, takeLatest } from "redux-saga/effects";
+import { all, call, put, takeLatest } from "redux-saga/effects";
 import {
   firestore,
   convertCollectionsSnapshotToMap,
@@ -34,4 +34,8 @@ export function* fetchCollectionsStart() {
   } catch (error) {
     console.error("Error in Saga", error);
   }
+}
+
+export function* shopSagas() {
+  yield all([call(fetchCollectionsStart)]);
 }

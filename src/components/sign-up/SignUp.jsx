@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import FormInput from "../form-input/FormInput";
 import CustomBtn from "../custom-btn/CustomBtn";
 
-import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+import { signUpStart } from "../../redux/user/userActions";
 
 import "./sign-up.scss";
 
@@ -16,6 +17,7 @@ function SignUp(props) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    const { signUpStart } = props;
     const { displayName, email, password, confirmPassword } = userInfo;
 
     if (displayName && email && password && confirmPassword) {
@@ -24,24 +26,26 @@ function SignUp(props) {
         return;
       }
 
-      try {
-        const { user } = await auth.createUserWithEmailAndPassword(
-          email,
-          password
-        );
+      signUpStart({ displayName, email, password });
 
-        createUserProfileDocument(user, { displayName });
+      // try {
+      //   const { user } = await auth.createUserWithEmailAndPassword(
+      //     email,
+      //     password,
+      //   );
 
-        setUserInfo({
-          displayName: "",
-          email: "",
-          password: "",
-          confirmPassword: "",
-        });
-      } catch (error) {
-        console.log("Sign Up Error: ", error);
-        alert("Sign Up Error");
-      }
+      //   createUserProfileDocument(user, { displayName });
+
+      //   setUserInfo({
+      //     displayName: "",
+      //     email: "",
+      //     password: "",
+      //     confirmPassword: "",
+      //   });
+      // } catch (error) {
+      //   console.log("Sign Up Error: ", error);
+      //   alert("Sign Up Error");
+      // }
     } else {
       alert("Please fill all the fields to Sign Up");
     }
@@ -99,4 +103,8 @@ function SignUp(props) {
   );
 }
 
-export default SignUp;
+const mapDispatchToProps = (dispatch) => ({
+  signUpStart: (userCredentials) => dispatch(signUpStart(userCredentials)),
+});
+
+export default connect(null, mapDispatchToProps)(SignUp);
